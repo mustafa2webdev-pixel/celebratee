@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "Wish": {
+      "title": "Wish",
+      "description": "Messages and wishes from guests to the couple.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the sender.",
+          "maxLength": 100
+        },
+        "message": {
+          "type": "string",
+          "description": "The wish message.",
+          "maxLength": 2000
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Time the wish was created"
+        }
+      },
+      "required": ["name", "message", "timestamp"]
+    },
+    "Vote": {
+      "title": "Vote",
+      "description": "Votes for the teams.",
+      "type": "object",
+      "properties": {
+        "team": {
+          "type": "string",
+          "enum": ["groom", "bride"]
+        },
+        "timestamp": {
+          "type": "number",
+          "description": "Time the vote was cast"
+        }
+      },
+      "required": ["team", "timestamp"]
+    }
+  },
+  "firestore": {
+    "wishes": {
+      "schema": { "$ref": "#/entities/Wish" },
+      "description": "Collection of wishes from guests."
+    },
+    "votes": {
+      "schema": { "$ref": "#/entities/Vote" },
+      "description": "Collection of team votes."
+    }
+  }
+}

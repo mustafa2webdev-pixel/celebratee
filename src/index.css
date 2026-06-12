@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=El+Messiri:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F5F2EB;
+  --color-dusty-blue: #8CA6BE;
+  --color-navy: #162433;
+  --color-olive: #6B705C;
+  --color-gold: #D4AF37;
+  --color-light-gray: #D1D5DB;
+
+  --font-script: "Aref Ruqaa", serif;
+  --font-english-script: "Great Vibes", cursive;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-cairo: "Cairo", sans-serif;
+  --font-ruqaa: "Aref Ruqaa", serif;
+  --font-amiri: "Amiri", serif;
+  --font-messiri: "El Messiri", sans-serif;
+}
+
+@layer utilities {
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+  }
+  .bg-ruled-paper {
+    background-image: repeating-linear-gradient(transparent, transparent 31px, rgba(140, 166, 190, 0.15) 31px, rgba(140, 166, 190, 0.15) 32px);
+    background-position: 0 40px;
+  }
+  .bg-parchment {
+    position: relative;
+  }
+  .bg-parchment::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+    mix-blend-mode: color-burn;
+    background-image: radial-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+    background-size: 16px 16px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .text-gold-foil {
+    background: linear-gradient(to right, #B38728, #FBF5B7, #D4AF37, #AA771C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    /* Removed animation to prevent iOS Safari text disappearing/flickering bugs */
+  }
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-navy);
+  overflow-x: hidden;
+  direction: rtl;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.scalloped-edge {
+  mask-image: radial-gradient(circle at 10px 10px, transparent 10px, black 10.5px);
+  mask-size: 20px 20px;
+  mask-position: -10px -10px;
+}
